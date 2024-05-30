@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <script src="../js/login-register.js" defer></script>
+    <script src="../js/updatePatientData.js"></script>
   </head>
   <body>
     <div id="navbarContainer"></div>
@@ -63,7 +64,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="formDataFirstName"
+                            id="firstNamePatient"
                             placeholder="imie"
                           />
                         </div>
@@ -78,7 +79,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="formDataLastName"
+                            id="lastNamePatient"
                             placeholder="nazwisko"
                           />
                         </div>
@@ -93,7 +94,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="formDataGender"
+                            id="genderPatient"
                             placeholder="płeć"
                           />
                         </div>
@@ -108,7 +109,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="formDataBirthdate"
+                            id="birthdatePatient"
                             placeholder="data urodzenia"
                           />
                         </div>
@@ -123,7 +124,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="formDataPESEL"
+                            id="peselPatient"
                             placeholder="pesel"
                           />
                         </div>
@@ -138,7 +139,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="formDataPhone"
+                            id="phonePatient"
                             placeholder="nr telefonu"
                           />
                         </div>
@@ -146,7 +147,7 @@
                     </div>
                   </div>
                   <div>
-                    <button type="button" class="buttonSaveData" id="saveDataPatient">
+                    <button type="button" class="buttonSaveData" id="saveDataPatient" onclick="updatePatientData()">
                       Zapisz zmiany
                     </button>
                   </div>

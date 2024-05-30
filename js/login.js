@@ -1,54 +1,71 @@
-function logged() {
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
+// function logged() {
+//   const username = document.getElementById("username").value.trim();
+//   const password = document.getElementById("password").value.trim();
 
-  if (username === "" && password === "") {
-    alert("Uzupełnij e-mail/PESEL i hasło!");
-  } else if (username === "pacjent" && password === "123") {
-    window.location.href = "./uiPatient/myaccountdata.html";
-  } else if (username === "lekarz" && password === "123") {
-    window.location.href = "./uiDoctor/myaccountdoctor.html";
-  } else if (username === "recepcja" && password === "123") {
-    window.location.href = "./uiWorker/myaccountreceptionregistration.html";
-  } else {
-    alert("Nieprawidłowy e-mail/PESEL lub hasło");
+//   if (username === "" && password === "") {
+//     alert("Uzupełnij e-mail/PESEL i hasło!");
+//   } else if (username === "pacjent" && password === "123") {
+//     window.location.href = "./uiPatient/myaccountdata.html";
+//   } else if (username === "lekarz" && password === "123") {
+//     window.location.href = "./uiDoctor/myaccountdoctor.html";
+//   } else if (username === "recepcja" && password === "123") {
+//     window.location.href = "./uiWorker/myaccountreceptionregistration.html";
+//   } else {
+//     alert("Nieprawidłowy e-mail/PESEL lub hasło");
+//   }
+// }
+async function logged() {
+  var email = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+
+  // Sprawdzenie, czy pola nie są puste
+  if (!email || !password) {
+    alert("Proszę wypełnić wszystkie pola.");
+    return;
+  }
+
+  try {
+    // Wysłanie danych do serwera
+    const loginResponse = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (loginResponse.status === 200) {
+      const data = await loginResponse.json();
+      const token = data.token;
+      localStorage.setItem("token", token); // Zapisanie tokena w localStorage
+      handleToken(token); // Przetwarzanie tokena
+    } else {
+      alert(`Błąd podczas logowania: ${await loginResponse.text()}`);
+    }
+  } catch (err) {
+    console.error("Błąd podczas wysyłania danych:", err);
+    alert(`Wystąpił błąd podczas logowania. Spróbuj ponownie. Błąd: ${err}`);
   }
 }
 
-// function logged() {
-//   var username = document.getElementById("username").value;
-//   var password = document.getElementById("password").value;
+function handleToken(token) {
+  const payload = decodeToken(token);
+  console.log("Decoded Payload:", payload);
 
-//   // Sprawdzenie, czy pola nie są puste
-//   if (!username || !password) {
-//     alert("Proszę wypełnić wszystkie pola.");
-//     return;
-//   }
+  // Przekierowanie na podstawie roli użytkownika
+  if (payload.type === "doctor") {
+    window.location.href = "./uiDoctor/myaccountdoctor.html";
+  } else if (payload.type === "receptionist") {
+    window.location.href = "./uiWorker/myaccountreceptionregistration.html";
+  } else if (payload.type === "patient") {
+    window.location.href = "./uiPatient/myaccountdata.html";
+  } else {
+    alert("Nieznana rola użytkownika");
+  }
+}
 
-//   // Wysłanie danych do serwera
-//   fetch("http://localhost:3000/login", {
-//     // mode: 'no-cors',
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       // 'Content-Type': 'application/x-www-form-urlencoded',
-//     },
-//     body: JSON.stringify({ username, password }),
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       if (data.success || data.type_user == doctor) {
-//         window.location.href = "myaccountdoctor.html";
-//       } else if (data.success || data.type_user == worker) {
-//         window.location.href = "myaccountreceptionregistration.html";
-//       } else if (data.success || data.type_user == patient) {
-//         window.location.href = "myaccountdata.html";
-//       } else {
-//         alert("Błąd logowania. Niepoprawny login lub hasło!");
-//       }
-//     })
-//     .catch((error) => {
-//       console.error("Błąd podczas wysyłania danych:", error);
-//       alert("Wystąpił błąd podczas rejestracji. Spróbuj ponownie.");
-//     });
-// }
+function decodeToken(token) {
+  const payloadBase64 = token.split(".")[1];
+  const payload = JSON.parse(atob(payloadBase64));
+  return payload;
+}
