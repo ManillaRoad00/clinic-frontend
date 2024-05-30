@@ -14,38 +14,36 @@
 // }
 
 
-function register() {
-  var username = document.getElementById('usernameR').value;
+async function register() {
+  var email = document.getElementById('usernameR').value;
   var password = document.getElementById('passwordR').value;
 
   // Sprawdzenie, czy pola nie są puste
-  if (!username || !password) {
+  if (!email || !password) {
       alert('Proszę wypełnić wszystkie pola.');
       return;
   }
 
-
+try {
   // Wysłanie danych do serwera
-  fetch('http://localhost:3000/register', {
-      // mode: 'no-cors',
+  const registerResponse = await fetch('http://localhost:3000/register', {
+       //mode: 'no-cors',
       method: 'POST',
 headers: {
 "Content-Type": "application/json",
 // 'Content-Type': 'application/x-www-form-urlencoded',
 },
-body: JSON.stringify({ username, password }),
+body: JSON.stringify({ email, password }),
   })
-  .then(response => response.json())
-  .then(data => {
-      if (data.success) {
-          alert('Użytkownik zarejestrowany pomyślnie!');
-          window.location.href = "login.html";
-      } else {
-          alert('Błąd podczas rejestracji. Spróbuj ponownie.');
-      }
-  })
-  .catch(error => {
-      console.error('Błąd podczas wysyłania danych:', error);
-      alert('Wystąpił błąd podczas rejestracji. Spróbuj ponownie.');
-  });
+
+  if(registerResponse. status == 200) {
+    alert('Użytkownik zarejestrowany pomyślnie!');
+    window.location.href = "login.html";
+  } else {
+    alert(`Blad podczas rejestracji: ${await registerResponse.text()}`)
+  }
+} catch (err) {
+    console.error('Błąd podczas wysyłania danych:', err);
+    alert(`Wystąpił błąd podczas rejestracji. Spróbuj ponownie. Błąd: ${err}`);
+}
 }
