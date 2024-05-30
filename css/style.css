@@ -1,0 +1,80 @@
+.navbar-brand {
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.container-background {
+  background-color: #d4f6fa;
+}
+.containerNaglowekStrony {
+  text-align: center;
+}
+.naglowek-strony-edit {
+  font-weight: bold;
+  font-size: 30px;
+}
+.naglowekStrony {
+  font-weight: bold;
+  color: #000000;
+  margin-top: 30px;
+}
+.subtitle {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.UI_data_container {
+  background-color: #6cbcf4;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.labelDataPatient {
+  font-weight: bold;
+}
+
+.buttonSaveData {
+  background-color: #6cbcf4;
+  border-radius: 10px;
+  border-style: none;
+  padding: 1%;
+  margin-left: 55%;
+  margin-top: 10px;
+}
+.buttonRegisterVisit{
+  background-color: #6cbcf4;
+  border-radius: 10px;
+  border: 5px solid #066ab1;
+  padding: 5%;
+  margin-right: 15px;
+}
+.divlogin {
+  background-color: #6cbcf4;
+  width: 40%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 5px solid #066ab1;
+  margin-top: 100px;
+}
+.divrejestracja {
+  background-color: #6cbcf4;
+  width: 40%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 5px solid #066ab1;
+  margin-top: 100px;
+}
+.UI_data_container {
+  background-color: #6cbcf4;
+  padding: 10px;
+  border-radius: 20px;
+  border: 5px solid #066ab1;
+}
+.container_UI_Patient{
+  background-color: white; 
+  border: 3px solid black; 
+  padding-bottom: 30px; 
+  margin-left: 40px; 
+  margin-right: 40px;
+}

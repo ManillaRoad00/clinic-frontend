@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-xl" style="background-color: #6cbcf4">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="index.html">Przychodnia XYZ</a>
+
+    <div
+      class="collapse navbar-collapse ms-auto justify-content-xl"
+      id="navbarSupportedContent"
+      style="font-weight: bold; color: black"
+    >
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link edit-przyciski"
+            href="../page_notlogged/aboutus.html"
+            >O nas</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Lekarze
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="piotrdudek.html">dr Piotr Dudek</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="drhouse.html">dr House</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="jakubnowak.html">dr Jakub Nowak</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="sjankowalski.html"
+                >dr Jan Kowalski</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link edit-przyciski"
+            href="../page_notlogged/contact.html"
+            >Kontakt</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link edit-przyciski" href="../page_notlogged/info.html"
+            >Informacje</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button
+        type="button"
+        class="btn btn-primary button-logowanie"
+        onclick="goToLoginPage()"
+      >
+        Zaloguj się
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        onclick="goToRegistrationPage()"
+      >
+        Zarejestruj się
+      </button>
+    </div>
+  </div>
+</nav>
+
