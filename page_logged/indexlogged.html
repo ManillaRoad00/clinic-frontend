@@ -11,9 +11,9 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/style.css" type="text/css" />
-    <script src="./my_components/navbar.js" type="module"></script>
-    <script src="./js/login-register.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <script src="../my_components/navbar.js" type="module"></script>
+    <script src="../js/login-register.js" defer></script>
   </head>
   <body>
     <div id="navbarContainer"></div>
@@ -76,7 +76,7 @@
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <img
-                    src="images/Slajd1.jpeg"
+                    src="../images/Slajd1.jpeg"
                     class="d-block w-100"
                     alt="slajd1"
                   />
@@ -90,7 +90,7 @@
                 </div>
                 <div class="carousel-item">
                   <img
-                    src="images/Slajd2.jpeg"
+                    src="../images/Slajd2.jpeg"
                     class="d-block w-100"
                     alt="slajd2"
                   />
@@ -104,7 +104,7 @@
                 </div>
                 <div class="carousel-item">
                   <img
-                    src="images/Slajd3.jpeg"
+                    src="../images/Slajd3.jpeg"
                     class="d-block w-100"
                     alt="slajd3"
                   />
@@ -120,7 +120,7 @@
                 </div>
                 <div class="carousel-item">
                   <img
-                    src="images/Slajd4.jpeg"
+                    src="../images/Slajd4.jpeg"
                     class="d-block w-100"
                     alt="slajd3"
                   />
@@ -165,7 +165,7 @@
     <div id="footerContainer"></div>
 
     <script>
-      fetch("./my_components/navbar_logged.html")
+      fetch("../my_components/navbar_logged.html")
         .then((response) => response.text())
         .then((content) => {
           document.getElementById("navbarContainer").innerHTML = content;
@@ -173,7 +173,7 @@
     </script>
 
     <script>
-      fetch("./my_components/footer.html")
+      fetch("../my_components/footer.html")
         .then((response) => response.text())
         .then((content) => {
           document.getElementById("footerContainer").innerHTML = content;
@@ -181,7 +181,7 @@
     </script>
     <script>
       function logOut() {
-        window.location.href = "index.html";
+        window.location.href = "../page_notlogged/index.html";
       }
     </script>
     <script

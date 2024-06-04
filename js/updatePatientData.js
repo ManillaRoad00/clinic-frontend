@@ -13,15 +13,17 @@ async function updatePatientData() {
   }
 
   try {
-    // Wysłanie danych do serwera
+    // Pobranie tokena JWT z lokalnego stanu aplikacji (np. localStorage)
+    const token = localStorage.getItem('token'); // Załóżmy, że token jest przechowywany w localStorage
+
+    // Wysłanie danych do serwera wraz z tokenem JWT
     const upadateResponse = await fetch(
       "http://localhost:3000/updateDataPatient",
       {
-        //mode: 'no-cors',
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
+          "Authorization": `Bearer ${token}` // Dodanie tokena JWT do nagłówka Authorization
         },
         body: JSON.stringify({
           firstName,

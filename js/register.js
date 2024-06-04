@@ -1,18 +1,17 @@
-// function register() {
-//   const username = document.getElementById("usernameR").value.trim();
-//   const password = document.getElementById("passwordR").value.trim();
-//   const passwordagain = document.getElementById("passwordagainR").value.trim();
-//   const checkboxAccept = document.getElementById("checkboxaccept").checked;
+function register() {
+  const username = document.getElementById("usernameR").value.trim();
+  const password = document.getElementById("passwordR").value.trim();
+  const passwordagain = document.getElementById("passwordagainR").value.trim();
+  const checkboxAccept = document.getElementById("checkboxaccept").checked;
 
-//   if (username === "" || password === "" || passwordagain === "") {
-//     alert("Uzupełnij Dane!");
-//   } else if (!checkboxAccept) {
-//     alert("Zaakcpetuj regulamin aby się zarejestrować!");
-//   } else {
-//     window.location.href = "login.html";
-//   }
-// }
-
+  if (username === "" || password === "" || passwordagain === "") {
+    alert("Uzupełnij Dane!");
+  } else if (!checkboxAccept) {
+    alert("Zaakcpetuj regulamin aby się zarejestrować!");
+  } else {
+    window.location.href = "login.html";
+  }
+}
 
 async function register() {
   var email = document.getElementById('usernameR').value;
@@ -29,10 +28,10 @@ try {
   const registerResponse = await fetch('http://localhost:3000/register', {
        //mode: 'no-cors',
       method: 'POST',
-headers: {
-"Content-Type": "application/json",
-// 'Content-Type': 'application/x-www-form-urlencoded',
-},
+      headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+  },
 body: JSON.stringify({ email, password }),
   })
 

@@ -40,7 +40,9 @@ async function logged() {
       localStorage.setItem("token", token); // Zapisanie tokena w localStorage
       handleToken(token); // Przetwarzanie tokena
     } else {
-      alert(`Błąd podczas logowania: ${await loginResponse.text()}`);
+      alert(
+        `Błąd podczas logowania. Niepoprawny email lub hasło. Błąd: ${await loginResponse.text()}`
+      );
     }
   } catch (err) {
     console.error("Błąd podczas wysyłania danych:", err);
