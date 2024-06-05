@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <script src="../js/login-register.js" defer></script>
     <script src="../js/updatePatientData.js"></script>
+    <script src="../js/loadPatientDataToPage.js" defer></script>
   </head>
   <body>
     <div id="navbarContainer"></div>
@@ -161,7 +162,12 @@
     </main>
 
     <div id="footerContainer"></div>
-
+    <script>
+    // Wersja z window.onload
+     window.onload = function() {
+       loadPatientDataToPage();
+    };
+    </script>
     <script>
       fetch("../my_components/navbar_logged.html")
         .then((response) => response.text())

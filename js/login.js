@@ -1,19 +1,3 @@
-// function logged() {
-//   const username = document.getElementById("username").value.trim();
-//   const password = document.getElementById("password").value.trim();
-
-//   if (username === "" && password === "") {
-//     alert("Uzupełnij e-mail/PESEL i hasło!");
-//   } else if (username === "pacjent" && password === "123") {
-//     window.location.href = "./uiPatient/myaccountdata.html";
-//   } else if (username === "lekarz" && password === "123") {
-//     window.location.href = "./uiDoctor/myaccountdoctor.html";
-//   } else if (username === "recepcja" && password === "123") {
-//     window.location.href = "./uiWorker/myaccountreceptionregistration.html";
-//   } else {
-//     alert("Nieprawidłowy e-mail/PESEL lub hasło");
-//   }
-// }
 async function logged() {
   var email = document.getElementById("username").value;
   var password = document.getElementById("password").value;
@@ -38,6 +22,7 @@ async function logged() {
       const data = await loginResponse.json();
       const token = data.token;
       localStorage.setItem("token", token); // Zapisanie tokena w localStorage
+      localStorage.setItem("email", email); // Zapisanie emaila w localStorage
       handleToken(token); // Przetwarzanie tokena
     } else {
       alert(
@@ -58,9 +43,9 @@ function handleToken(token) {
   if (payload.type === "doctor") {
     window.location.href = "./uiDoctor/myaccountdoctor.html";
   } else if (payload.type === "receptionist") {
-    window.location.href = "./uiWorker/myaccountreceptionregistration.html";
+    window.location.href = "./uiWorker/myaccountreception.html ";
   } else if (payload.type === "patient") {
-    window.location.href = "./uiPatient/myaccountdata.html";
+    window.location.href = "./uiPatient/myaccountdata.html ";
   } else {
     alert("Nieznana rola użytkownika");
   }

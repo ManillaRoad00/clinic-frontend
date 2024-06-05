@@ -23,6 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //wyswietlanie komunikatow na stronie przydatne dla użytkownikow.............................................................................................
 
+//pierwsze pole email:
+var emailInput = document.getElementById("usernameR");
+var emailMessage0 = document.getElementById("emailMessage0");
+
+//nasłuchiwacz zdarzeń na pole hasła
+emailInput.addEventListener("input", function () {
+  var email = emailInput.value;
+  var emailRegex = /^(?=.*[@.])(?!.*[^@.\w])[A-Za-z\d@.]{3,255}$/;
+
+  if (!emailRegex.test(email)) {
+    // Jeśli email jest niepoprawny
+    emailInput.style.borderColor = "red";
+    emailMessage0.style.display = "block";
+  } else {
+    // Jeśli email jest poprawny
+    emailInput.style.borderColor = "";
+    emailMessage0.style.display = "none";
+  }
+});
+
 //pierwsze pole hasła:
 var passwordInput = document.getElementById("passwordR");
 var messageElement1 = document.getElementById("passwordMessage1");

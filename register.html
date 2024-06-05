@@ -27,9 +27,11 @@
         <div class="row">
             <div class="col-sm-12 mt-3"> <!-- tu bedzie responsywnosc col -->
                 <section>
-                    <header>
-                        <h2 class="naglowek-strony-edit">Zarejestruj się:</h2>
-                    </header>
+                  <header>
+                    <div class="containerNaglowekStrony">
+                      <h2 class="naglowekStrony">Zarejestruj się:</h2>
+                    </div>
+                  </header>
                 </section>
                 <section>
                   <div class="container">
@@ -40,11 +42,12 @@
                             <label for="username">email/PESEL:</label>
                             <input type="text" class="form-control" id="usernameR" name="usernameR" required pattern="[A-Za-z0-9@.]{3,255}">
                           </div>
+                          <div id="emailMessage0" style="color: red; display: none;">Niepoprawny zapis e-mailu! </div>
                           <div class="form-group">
                             <label for="password">Hasło:</label>
                             <input type="password" class="form-control" id="passwordR" name="passwordR" required pattern="[A-Za-z0-9!@#$%&]{8,50}"  title="Hasło musi zawierać przynajmniej 8 znaków! Powinno się składać z liter, cyfr i znaku spcjalnego (! @ # $ % &)">
                           </div>
-                          <div id="passwordMessage1" style="color: red; display: none;">Słabe hasło!</div>
+                          <div id="passwordMessage1" style="color: red; display: none;">Słabe hasło! </br> Musi zawierać przynajmniej 8 znaków w tym przynajmniej jedną cyfrę oraz przynajmniej jeden znak specjalny np: ! @ # $ % & </div>
                           <div class="form-group">
                             <label for="password">Powtórz hasło:</label>
                             <input type="password" class="form-control" id="passwordagainR" name="passwordagainR" required pattern="[A-Za-z0-9!@#$%&]{8,50}">
@@ -53,7 +56,7 @@
                           <div class="form-group" style="float: left">
                             <input class="form-check-input" type="checkbox" value="" id="checkboxaccept">
                             <label class="form-check-label" for="flexCheckChecked">
-                              Akceptuje regulamin
+                              Akceptuje <a href="./regulamin.html" target="_blank">regulamin*</a>
                             </label>
                           </div>
                           </br></br>

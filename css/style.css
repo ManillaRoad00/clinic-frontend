@@ -42,7 +42,7 @@
   margin-left: 55%;
   margin-top: 10px;
 }
-.buttonRegisterVisit{
+.buttonRegisterVisit {
   background-color: #6cbcf4;
   border-radius: 10px;
   border: 5px solid #066ab1;
@@ -71,19 +71,24 @@
   border-radius: 20px;
   border: 5px solid #066ab1;
 }
-.container_UI_Patient{
-  background-color: white; 
-  border: 3px solid black; 
-  padding-bottom: 30px; 
-  margin-left: 40px; 
+.container_UI_Patient {
+  background-color: white;
+  border: 3px solid black;
+  padding-bottom: 30px;
+  margin-left: 40px;
   margin-right: 40px;
 }
 /* strony o lekarzach: */
-.zdjecie-doktora{
-	text-align: center;
+.zdjecie-doktora {
+  text-align: center;
 }
-.opis-doktora{
-	border: 4px solid #6CBCF4;
-	padding: 20px;
-	font-weight: bold;
+.opis-doktora {
+  border: 4px solid #6cbcf4;
+  padding: 20px;
+  font-weight: bold;
+}
+.container-background-lekarze {
+  background-color: #d4f6fa;
+  padding-right: 10%;
+  padding-left: 10%;
 }
