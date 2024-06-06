@@ -1,3 +1,18 @@
+.notification {
+  display: none; /* Początkowo ukryte */
+  background-color: #4caf50; /* Zielone tło */
+  color: white; /* Biały tekst */
+  padding: 15px;
+  position: fixed; /* Pozostaje w jednym miejscu na ekranie */
+  top: 10%; /* Wyśrodkowanie w pionie */
+  left: 50%; /* Wyśrodkowanie w poziomie */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Przesunięcie o połowę szerokości i wysokości elementu */
+  border-radius: 5px; /* Zaokrąglone rogi */
+}
+
 .navbar-brand {
   font-weight: bold;
   font-size: 35px;

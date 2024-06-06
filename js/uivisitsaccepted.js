@@ -33,6 +33,9 @@ fetch("http://localhost:3000/reception/acceptedvisits", {
   .catch((error) => {
     console.error("Błąd podczas pobierania danych o wizytach:", error);
   });
+
+
+  
 function handleErrorButtonClick(visitId) {
   fetch(`http://localhost:3000/reception/reportedvisits/${visitId}`, {
     method: "DELETE",

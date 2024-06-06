@@ -1,13 +1,13 @@
 var button = document.getElementById("buttonRegistrationVisit");
-
 button.onclick = registration;
 
-async function registration() {
+async function registration(doctorsData) {
   var doctor = document.getElementById("chooseDoctor").value;
+  //var doctor = doctorsData.find((doctor) => doctor.id === selectedDoctorId);
   var description = document.getElementById("provideadescription").value;
-  console.log("Test");
+
   // Sprawdzenie, czy pola nie są puste
-  if (!doctor || !description) {
+  if (!description) {
     alert("Proszę wypełnić wszystkie pola.");
     return;
   }
@@ -29,7 +29,7 @@ async function registration() {
     );
 
     if (registrationResponse.status == 200) {
-      alert("Zgłoszenie rejestracji wizyty zrobione pomyślnie!");
+      showNotification();
     } else {
       alert(
         `Blad podczas rejestracji wizyty: ${await registrationResponse.text()}`
@@ -41,4 +41,14 @@ async function registration() {
       `Wystąpił błąd podczas rejestracji wizyty. Spróbuj ponownie. Błąd: ${err}`
     );
   }
+}
+
+function showNotification() {
+  var notification = document.getElementById("notification");
+  notification.style.display = "block"; // Pokaż powiadomienie
+
+  // Ukryj powiadomienie po 3 sekundach
+  setTimeout(function () {
+    notification.style.display = "none";
+  }, 4000);
 }
