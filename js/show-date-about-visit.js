@@ -1,3 +1,15 @@
+// Odczytanie parametrów URL po załadowaniu strony
+document.addEventListener("DOMContentLoaded", () => {
+  params = getUrlParams();
+  const visitId = params["id"];
+
+  if (visitId) {
+    document.getElementById("setImiePacjenta").innerHTML = visitId;
+  }
+
+  // Wywołanie funkcji showdateaboutvisit z parametrem visitId
+  showdateaboutvisit(visitId);
+});
 let params;
 
 function getUrlParams() {
@@ -11,24 +23,8 @@ function getUrlParams() {
   return params;
 }
 
-// Odczytanie parametrów URL po załadowaniu strony
-document.addEventListener("DOMContentLoaded", () => {
-  params = getUrlParams();
-  const visitId = params["id"];
-
-  if (visitId) {
-    document.getElementById("setImiePacjenta").innerHTML = visitId;
-  }
-  console.log.apply(visitId);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  showdateaboutvisit();
-});
-async function showdateaboutvisit() {
-  const visitId = params["id"];
+async function showdateaboutvisit(visitId) {
   var rozpoznanie = document.getElementById("rozpoznanieLekarza").value;
-  console.log("testtttttttttttt");
   try {
     // Wysłanie danych do serwera
     const dateaboutpatientResponse = await fetch(
@@ -37,6 +33,7 @@ async function showdateaboutvisit() {
         //mode: 'no-cors',
         method: "GET",
         headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
           "Content-Type": "application/json",
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -45,7 +42,6 @@ async function showdateaboutvisit() {
     if (dateaboutpatientResponse.status == 200) {
       const data = await dateaboutpatientResponse.json();
       console.log(data);
-
       if (data.length > 0) {
         const patientData = data[0]; // Uzyskaj pierwszy obiekt z tablicy
 
@@ -57,15 +53,13 @@ async function showdateaboutvisit() {
         const gender = patientData.gender;
         const aboutVisit = patientData.about;
 
-        console.log(name);
-
         // Wstawianie wartości do elementów HTML
-        document.getElementById("setImiePacjenta").innerHTML = name;
-        document.getElementById("setImiePacjenta").innerHTML = surname;
-        document.getElementById("setImiePacjenta").innerHTML = pesel;
-        document.getElementById("setImiePacjenta").innerHTML = birth_date;
-        document.getElementById("setImiePacjenta").innerHTML = gender;
-        document.getElementById("setImiePacjenta").innerHTML = aboutVisit;
+        document.getElementById("patientName").value = name;
+        document.getElementById("patientSurname").value = surname;
+        document.getElementById("patientPesel").innerHTML = pesel;
+        document.getElementById("patientBirthDate").innerHTML = birth_date;
+        document.getElementById("patientGender").innerHTML = gender;
+        document.getElementById("patientAboutVisit").innerHTML = aboutVisit;
       } else {
         console.warn("No patient data found.");
       }
