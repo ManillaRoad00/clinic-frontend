@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <script src="../js/login-register.js" defer></script>
+    <script src="../js/showPatientVisit.js" defer></script>
   </head>
   <body>
     <div id="navbarContainer"></div>
@@ -28,7 +29,7 @@
               <section>
                 <header>
                   <div class="containerNaglowekStrony">
-                    <h1 class="naglowekStrony">Moje Konto:</h1>
+                    <h1 class="naglowekStrony">Moje Konto Pacjenta - Wizyty:</h1>
                   </div>
                 </header>
               </section>
@@ -43,15 +44,13 @@
                     background-color: rgb(255, 255, 255);
                     border-top: 3px solid black;
                     border-right: 3px solid black;
-                    border-bottom: none; /* Brak obramowania na dolnej krawędzi */
+                    border-bottom: none;
                     border-left: 3px solid black;
                   }
                 </style>
               </section>
               <section>
-                <div class="container_UI_Patient">
-                  <div class="subtitle">Moje Wizyty:</div>
-                  
+                <div class="container_UI_Patient">        
                   <div>
                     <table class="table">
                       <thead>
@@ -60,33 +59,15 @@
                           <th scope="col">Lekarz</th>
                           <th scope="col">Krótki opis przyczyny wizyty</th>
                           <th scope="col">Status</th>
-                      
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr class="table-success">
-                          <td>28.05.2024</td>
-                          <td id="doctor-data"></td>
-                          <td>Do Choroszczy na badania</td>
-                          <td>Z BAZY DANYCH</td>
-                        </tr>
-                        <tr class="table-success">
-                          <td>28.05.2024</td>
-                          <td>Dane lekarza</td>
-                          <td>Do Choroszczy na badania</td>
-                          <td>Z BAZY DANYCH</td>
-                        </tr>
+                      <tbody id="tabela-wizyt-pacjenta">
+                        <!-- Tutaj zostaną wstawione wiersze -->
                       </tbody>
                     </table>
                   </div>
-                 
                 </div>
               </section>
-              <Script>
-                const imie="Piotr";
-
-                document.getElementById("doctor-data").innerText = imie;
-              </Script>
             </div>
           </div>
           <section></section>

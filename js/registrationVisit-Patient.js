@@ -4,11 +4,10 @@ button.onclick = registration;
 
 async function registration() {
   var doctor = document.getElementById("chooseDoctor").value;
-  var data = document.getElementById("chooseDate").value;
   var description = document.getElementById("provideadescription").value;
   console.log("Test");
   // Sprawdzenie, czy pola nie są puste
-  if (!doctor || !data || !description) {
+  if (!doctor || !description) {
     alert("Proszę wypełnić wszystkie pola.");
     return;
   }
