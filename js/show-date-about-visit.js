@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const visitId = params["id"];
 
   if (visitId) {
-    document.getElementById("setImiePacjenta").innerHTML = visitId;
+    document.getElementById("visitid").innerHTML = visitId;
   }
 
   // Wywołanie funkcji showdateaboutvisit z parametrem visitId
@@ -24,7 +24,7 @@ function getUrlParams() {
 }
 
 async function showdateaboutvisit(visitId) {
-  var rozpoznanie = document.getElementById("rozpoznanieLekarza").value;
+  var rozpoznanie = document.getElementById("note").value;
   try {
     // Wysłanie danych do serwera
     const dateaboutpatientResponse = await fetch(
@@ -54,12 +54,14 @@ async function showdateaboutvisit(visitId) {
         const aboutVisit = patientData.about;
 
         // Wstawianie wartości do elementów HTML
-        document.getElementById("patientName").value = name;
-        document.getElementById("patientSurname").value = surname;
-        document.getElementById("patientPesel").innerHTML = pesel;
-        document.getElementById("patientBirthDate").innerHTML = birth_date;
-        document.getElementById("patientGender").innerHTML = gender;
-        document.getElementById("patientAboutVisit").innerHTML = aboutVisit;
+        document.getElementById("name").innerHTML = name;
+        console.log(`name=${name}`)
+        document.getElementById("last_name").innerHTML = surname;
+        console.log(`surname=${surname}`)
+        document.getElementById("pesel").innerHTML = pesel;
+        document.getElementById("age").innerHTML = birth_date;
+        document.getElementById("sex").innerHTML = gender;
+        document.getElementById("reason").innerHTML = aboutVisit;
       } else {
         console.warn("No patient data found.");
       }
@@ -70,7 +72,7 @@ async function showdateaboutvisit(visitId) {
     }
   } catch (err) {
     console.error("Błąd podczas wysyłania danych:", err);
-    alert(
+    alert(``
       `Wystąpił błąd podczas zatwierdzania wizyty. Spróbuj ponownie. Błąd: ${err}`
     );
   }
