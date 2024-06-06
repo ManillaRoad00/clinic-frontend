@@ -34,8 +34,6 @@ fetch("http://localhost:3000/reception/acceptedvisits", {
     console.error("Błąd podczas pobierania danych o wizytach:", error);
   });
 
-
-  
 function handleErrorButtonClick(visitId) {
   fetch(`http://localhost:3000/reception/reportedvisits/${visitId}`, {
     method: "DELETE",
@@ -47,7 +45,7 @@ function handleErrorButtonClick(visitId) {
       if (!response.ok) {
         throw new Error("Wystąpił problem podczas usuwania wizyty.");
       }
-      return response.json();
+      return response.text(); // Odczytujemy zwykły tekst zamiast parsować JSON
     })
     .then((data) => {
       console.log("Wizyta została anulowana:", data);

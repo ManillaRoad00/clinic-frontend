@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Przychodnia XYZ</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -13,94 +13,64 @@
     />
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <script src="../js/login-register.js" defer></script>
+    <script src="../js/updatePatientData.js" defer></script>
   </head>
   <body>
     <div id="navbarContainer"></div>
     <main>
       <div
         class="container container-background"
-        style="height: 100vh; width: 100vw"
+        style="padding-bottom: 10%; height: 100vh"
       >
         <article>
-          <section>
-            <header>
-              <div class="containerNaglowekStrony">
-                <h2 class="naglowekStrony">Umówione wizyty:</h2>
-              </div>
-            </header>
-          </section>
-          <section>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">nr</th>
-                  <th scope="col">Data</th>
-                  <th scope="col">Imie</th>
-                  <th scope="col">Nazwisko</th>
-                  <th scope="col">Wiek</th>
-                  <th scope="col">Krótki opis przyczyny wizyty</th>
-                  <th scope="col">Akcja</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table-success">
-                  <th scope="row">1</th>
-                  <td>28.05.2024</td>
-                  <td>Krzysztof</td>
-                  <td>Kononowicz</td>
-                  <td>67</td>
-                  <td>Do Choroszczy na badania</td>
-                  <td>
-                    <button id="zmienna_z_ID_wizyty" onclick="startVisit()">
-                      Przyjmij
-                    </button>
-                  </td>
-                </tr>
-                <tr class="table-danger">
-                  <th scope="row">2</th>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>...</td>
-                  <td>
-                    <button id="zmienna_z_ID_wizyty" onclick="startVisit()">
-                      Przyjmij
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-          <style>
-            .data {
-              background-color: rgb(255, 255, 255);
-            }
-          </style>
+          <div class="row">
+            <div class="col-sm-12 mt-3">
+              <!-- tu bedzie responsywnosc col -->
+              <section>
+                <header>
+                  <div class="containerNaglowekStrony">
+                    <h1 class="naglowekStrony">Zatwierdzone Wizyty:</h1>
+                  </div>
+                </header>
+              </section>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 mt-3">
+              <section>
+                <div class="container_UI_Patient">
+                  <div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">nr</th>
+                          <th scope="col">Godzina</th>
+                          <th scope="col">Pacjent (imie, nazwisko)</th>
+                          <th scope="col">Akcja</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tabela-wizyt">
+                        <!-- Tutaj zostaną wstawione wiersze -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
           <section></section>
         </article>
       </div>
     </main>
 
     <div id="footerContainer"></div>
+
     <script>
-      function startVisit() {
-        window.open("./editvisit.html", "_blank");
-        console.log("nowe okno");
-      }
-    </script>
-    <script>
-      fetch("../my_components/navbar_logged_doctor.html")
+      fetch("../my_components/navbar_logged_reception.html")
         .then((response) => response.text())
         .then((content) => {
           document.getElementById("navbarContainer").innerHTML = content;
-        });
-    </script>
-    <script>
-      fetch("../my_components/uipatient.html")
-        .then((response) => response.text())
-        .then((content) => {
-          document.getElementById("navbarUI").innerHTML = content;
         });
     </script>
 
@@ -116,6 +86,7 @@
         window.location.href = "../page_notlogged/index.html";
       }
     </script>
+    <script src="../js/uivisitsacceptedDoctor.js" defer></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
