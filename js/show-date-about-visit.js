@@ -22,7 +22,23 @@ function getUrlParams() {
   });
   return params;
 }
-
+async function finishVisit() {
+  const diagnosis = document.getElementById('rozpoznanieLekarza').value;
+  console.log(diagnosis)
+  const visitId = document.getElementById('visitid').textContent;
+  const finishVisitResponse = await fetch(`http://localhost:3000/finishVisit/${visitId}`, 
+{
+  method: 'POST',
+  headers: {
+    Authorization: "Bearer " + localStorage.getItem("token"),
+    "Content-Type": "application/json",
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  body:JSON.stringify( {
+    diagnosis: diagnosis
+  })
+})
+}
 async function showdateaboutvisit(visitId) {
   var rozpoznanie = document.getElementById("note").value;
   try {
