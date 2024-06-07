@@ -42,12 +42,30 @@ async function loadPatientDataToPage() {
         console.log(name);
 
         // Wstawianie wartości do elementów HTML
-        document.getElementById("firstNamePatient").value = name;
-        document.getElementById("lastNamePatient").value = surname;
-        document.getElementById("genderPatient").value = gender;
-        document.getElementById("birthdatePatient").value = birth_date;
-        document.getElementById("peselPatient").value = pesel;
-        document.getElementById("phonePatient").value = phone;
+        if (name) {
+          document.getElementById("firstNamePatient").value = name;
+        }
+
+        if (surname) {
+          document.getElementById("lastNamePatient").value = surname;
+        }
+
+        if (gender) {
+          document.getElementById("genderPatient").value = gender;
+        }
+
+        if (birth_date) {
+          const formattedDate = birth_date.split("T")[0];
+          document.getElementById("birthdatePatient").value = formattedDate;
+        }
+
+        if (pesel) {
+          document.getElementById("peselPatient").value = pesel;
+        }
+
+        if (phone) {
+          document.getElementById("phonePatient").value = phone;
+        }
       } else {
         console.warn("No patient data found.");
       }

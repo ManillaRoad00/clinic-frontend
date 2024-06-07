@@ -4,7 +4,7 @@ async function logged() {
 
   // Sprawdzenie, czy pola nie są puste
   if (!email || !password) {
-    alert("Proszę wypełnić wszystkie pola.");
+    showNotification(1);
     return;
   }
 
@@ -55,4 +55,13 @@ function decodeToken(token) {
   const payloadBase64 = token.split(".")[1];
   const payload = JSON.parse(atob(payloadBase64));
   return payload;
+}
+function showNotification() {
+  var notification = document.getElementById("notification1");
+  notification.style.display = "block"; // Pokaż powiadomienie
+
+  // Ukryj powiadomienie po 3 sekundach
+  setTimeout(function () {
+    notification.style.display = "none";
+  }, 3000);
 }

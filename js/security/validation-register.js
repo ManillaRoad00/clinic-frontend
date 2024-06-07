@@ -1,3 +1,7 @@
+let isEmailCorrect = false;
+let isPasswordCorrect = false;
+let isPasswordAgain = false;
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   const username = document.getElementById("usernameR");
@@ -9,10 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Walidacja formularza przy próbie wysłania
   function validationRegister() {
-    let isValid = true;
-
-    if (!isValid) {
+    if (!isEmailCorrect || !isPasswordCorrect || !isPasswordAgain) {
       event.preventDefault(); // Zatrzymanie domyślnego wysyłania formularza
+      alert("Podaj poprawne dane!");
     } else {
       //jesli walidacja sie powiedzie
       register();
@@ -36,10 +39,12 @@ emailInput.addEventListener("input", function () {
     // Jeśli email jest niepoprawny
     emailInput.style.borderColor = "red";
     emailMessage0.style.display = "block";
+    isEmailCorrect = false;
   } else {
     // Jeśli email jest poprawny
     emailInput.style.borderColor = "";
     emailMessage0.style.display = "none";
+    isEmailCorrect = true;
   }
 });
 
@@ -56,10 +61,12 @@ passwordInput.addEventListener("input", function () {
     // Jeśli hasło nie spełnia wymagań
     passwordInput.style.borderColor = "red";
     messageElement1.style.display = "block";
+    isPasswordCorrect = false;
   } else {
     // Jeśli hasło spełnia wszystkie wymagania
     passwordInput.style.borderColor = "";
     messageElement1.style.display = "none";
+    isPasswordCorrect = true;
   }
 });
 
@@ -78,10 +85,12 @@ confirmPasswordInput.addEventListener("input", function () {
     confirmPasswordInput.style.borderColor = "red";
     //confirmPasswordInput.style.backgroundColor = '#FF00004A';
     messageElement.style.display = "block";
+    isPasswordAgain = false;
   } else {
     // Jeśli hasła są takie same
     confirmPasswordInput.style.borderColor = "";
     confirmPasswordInput.style.backgroundColor = "";
     messageElement.style.display = "none";
+    isPasswordAgain = true;
   }
 });

@@ -23,21 +23,25 @@ function getUrlParams() {
   return params;
 }
 async function finishVisit() {
-  const diagnosis = document.getElementById('rozpoznanieLekarza').value;
-  console.log(diagnosis)
-  const visitId = document.getElementById('visitid').textContent;
-  const finishVisitResponse = await fetch(`http://localhost:3000/finishVisit/${visitId}`, 
-{
-  method: 'POST',
-  headers: {
-    Authorization: "Bearer " + localStorage.getItem("token"),
-    "Content-Type": "application/json",
-    // 'Content-Type': 'application/x-www-form-urlencoded',
-  },
-  body:JSON.stringify( {
-    diagnosis: diagnosis
-  })
-})
+  const diagnosis = document.getElementById("rozpoznanieLekarza").value;
+  console.log(diagnosis);
+  const visitId = document.getElementById("visitid").textContent;
+  const finishVisitResponse = await fetch(
+    `http://localhost:3000/finishVisit/${visitId}`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({
+        diagnosis: diagnosis,
+      }),
+    }
+  );
+
+  window.close();
 }
 async function showdateaboutvisit(visitId) {
   var rozpoznanie = document.getElementById("note").value;
@@ -71,9 +75,7 @@ async function showdateaboutvisit(visitId) {
 
         // Wstawianie wartości do elementów HTML
         document.getElementById("name").innerHTML = name;
-        console.log(`name=${name}`)
         document.getElementById("last_name").innerHTML = surname;
-        console.log(`surname=${surname}`)
         document.getElementById("pesel").innerHTML = pesel;
         document.getElementById("age").innerHTML = birth_date;
         document.getElementById("sex").innerHTML = gender;
@@ -88,8 +90,8 @@ async function showdateaboutvisit(visitId) {
     }
   } catch (err) {
     console.error("Błąd podczas wysyłania danych:", err);
-    alert(``
-      `Wystąpił błąd podczas zatwierdzania wizyty. Spróbuj ponownie. Błąd: ${err}`
+    alert(
+      ```Wystąpił błąd podczas zatwierdzania wizyty. Spróbuj ponownie. Błąd: ${err}`
     );
   }
 }
